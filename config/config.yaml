@@ -1,0 +1,198 @@
+# Configuration for Market Intelligence System
+
+# Scraper Configuration
+scraper:
+  # Target metrics
+  max_tweets: 2000
+  time_window_hours: 24
+  
+  # Hashtags to monitor
+  hashtags:
+    - '#nifty50'
+    - '#sensex'
+    - '#intraday'
+    - '#banknifty'
+    - '#stockmarket'
+    - '#nse'
+    - '#bse'
+  
+  # Additional search terms
+  keywords:
+    - 'nifty'
+    - 'sensex'
+    - 'bank nifty'
+    - 'intraday'
+  
+  # Rate limiting (optimized for more tweets)
+  scroll_delay_min: 1.0
+  scroll_delay_max: 2.0
+  max_scrolls: 150
+  scroll_pause_time: 1.5
+  
+  # Retry logic
+  max_retries: 3
+  retry_delay: 5
+  
+  # Browser settings
+  headless: false
+  window_size: [1920, 1080]
+  page_load_timeout: 30
+  
+  # Anti-bot measures
+  use_random_user_agent: true
+  use_proxy: false
+  stealth_mode: true
+
+# Data Processing Configuration
+processing:
+  # Chunking for memory efficiency
+  chunk_size: 1000
+  
+  # Deduplication
+  dedup_threshold: 0.95
+  dedup_field: 'content'
+  
+  # Text cleaning
+  remove_urls: true
+  remove_mentions: false  # Keep for analysis
+  remove_hashtags: false  # Keep for analysis
+  remove_emojis: false    # Keep for sentiment
+  normalize_unicode: true
+  
+  # Language filtering
+  filter_languages: true
+  allowed_languages:
+    - 'en'
+    - 'hi'  # Hindi
+  
+  # Content validation
+  min_content_length: 10
+  max_content_length: 500
+
+# Storage Configuration
+storage:
+  # Format settings
+  format: 'parquet'
+  compression: 'snappy'
+  
+  # Paths
+  raw_data_path: 'data/raw'
+  processed_data_path: 'data/processed'
+  
+  # Parquet options
+  parquet_version: '2.6'
+  use_dictionary: true
+  
+  # Retention
+  keep_raw_data: true
+  raw_data_retention_days: 7
+
+# Analysis Configuration
+analysis:
+  # TF-IDF settings
+  tfidf_max_features: 1000
+  tfidf_ngram_range: [1, 2]
+  tfidf_min_df: 2
+  tfidf_max_df: 0.95
+  
+  # Sentiment analysis
+  sentiment_threshold: 0.5
+  use_vader: true
+  use_textblob: true
+  
+  # Signal generation
+  signal_confidence_min: 0.6
+  engagement_weight: 0.3
+  sentiment_weight: 0.4
+  temporal_weight: 0.3
+  
+  # Temporal aggregation
+  time_buckets: ['1H', '4H', '1D']
+  
+  # Feature engineering
+  extract_stock_symbols: true
+  extract_numbers: true
+  extract_market_terms: true
+
+# Visualization Configuration
+visualization:
+  # Memory efficiency
+  max_points_per_plot: 10000
+  use_sampling: true
+  sampling_strategy: 'stratified'
+  
+  # Plot settings
+  figure_size: [12, 8]
+  dpi: 100
+  style: 'seaborn-v0_8-darkgrid'
+  
+  # Output
+  output_path: 'outputs/visualizations'
+  save_format: 'png'
+  save_interactive: true
+  interactive_format: 'html'
+
+# Logging Configuration
+logging:
+  level: 'INFO'
+  format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+  log_to_file: true
+  log_to_console: true
+  log_path: 'logs'
+  max_file_size_mb: 10
+  backup_count: 5
+  
+  # Component-specific levels
+  levels:
+    scraper: 'INFO'
+    processor: 'INFO'
+    storage: 'INFO'
+    analysis: 'INFO'
+
+# Performance Configuration
+performance:
+  # Concurrency
+  use_multiprocessing: true
+  max_workers: 4
+  
+  # Memory management
+  memory_limit_mb: 2048
+  enable_memory_profiling: false
+  
+  # Caching
+  use_cache: true
+  cache_size_mb: 512
+
+# Market-specific Configuration
+market:
+  # Trading hours (IST)
+  market_open: '09:15'
+  market_close: '15:30'
+  
+  # Key indices
+  indices:
+    - 'NIFTY 50'
+    - 'SENSEX'
+    - 'BANK NIFTY'
+    - 'NIFTY IT'
+  
+  # Market terms
+  bullish_terms:
+    - 'bullish'
+    - 'buy'
+    - 'long'
+    - 'breakout'
+    - 'rally'
+    - 'surge'
+    - 'moon'
+    - 'pump'
+  
+  bearish_terms:
+    - 'bearish'
+    - 'sell'
+    - 'short'
+    - 'breakdown'
+    - 'crash'
+    - 'dump'
+    - 'fall'
+    - 'decline'

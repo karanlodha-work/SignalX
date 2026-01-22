@@ -1,3 +1,4 @@
+# Scrapes Twitter/X tweets using undetected Chrome with manual login and rate limiting
 import json
 import random
 import time
@@ -32,6 +33,7 @@ class TwitterScraper:
         'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
     ]
 
+    # Initializes with configuration, rate limiter, and browser driver setup
     def __init__(self, config: dict):
         self.config = config
         self.logger = logging.getLogger(__name__)
@@ -44,6 +46,7 @@ class TwitterScraper:
         self.scraped_tweet_ids: Set[str] = set()
         self.is_logged_in: bool = False
 
+    # Prompts user to manually log in to X.com in the browser, waits for confirmation
     def manual_login(self):
         if not self.driver:
             self.driver = self._setup_driver()
@@ -65,6 +68,7 @@ class TwitterScraper:
         self.logger.info("Login confirmed. Starting to scrape...")
         return True
 
+    # Configures undetected Chrome driver with stealth options and CDP settings
     def _setup_driver(self) -> webdriver.Chrome:
         self.logger.info("Setting up Chrome driver with stealth mode")
 
@@ -114,7 +118,8 @@ class TwitterScraper:
         except Exception as e:
             self.logger.error(f"Failed to setup Chrome driver: {e}")
             raise
-
+    
+    # Simulates human-like scrolling with variable steps and pauses
     def _human_like_scroll(self, pause_time: float = 2.0):
         scroll_distance = random.randint(600, 900)
 
@@ -126,7 +131,8 @@ class TwitterScraper:
             time.sleep(random.uniform(0.1, 0.2))
 
         time.sleep(pause_time)
-
+    
+    # Extracts tweet ID, content, author, metrics from DOM element, returns structured dict
     def _extract_tweet_data(self, tweet_element) -> Optional[Dict]:
         try:
             tweet_id = None
@@ -225,7 +231,8 @@ class TwitterScraper:
         except Exception as e:
             self.logger.debug(f"Failed to extract tweet data: {e}")
             return None
-
+    
+    # Scrapes tweets for multiple hashtags with manual login, handles errors and browser crashes
     def scrape_hashtags(
         self,
         hashtags: List[str],
@@ -288,6 +295,7 @@ class TwitterScraper:
                 except:
                     pass
 
+    # Scrapes single hashtag using scrolling until max_tweets or no new tweets found
     def _scrape_single_hashtag(
         self,
         hashtag: str,
@@ -384,6 +392,7 @@ class TwitterScraper:
 
         return tweets
 
+    # Saves raw tweets to JSON file with timestamp in filename
     def save_raw_data(self, tweets: List[Dict], output_dir: str = "data/raw"):
         output_path = Path(output_dir)
         output_path.mkdir(parents=True, exist_ok=True)

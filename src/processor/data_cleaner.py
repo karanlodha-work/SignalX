@@ -1,3 +1,4 @@
+# Cleans and validates tweet data by removing URLs, mentions, emojis, and normalizing text
 
 import re
 import unicodedata
@@ -9,6 +10,7 @@ import logging
 
 class DataCleaner:
     
+    # Initializes with regex patterns for URLs, mentions, hashtags, and emojis
     def __init__(self, config: dict = None):
         self.config = config or {}
         self.logger = logging.getLogger(__name__)
@@ -34,6 +36,7 @@ class DataCleaner:
             "]+", flags=re.UNICODE
         )
     
+    # Normalizes text by removing URLs, optionally preserves hashtags/mentions
     def clean_text(self, text: str, preserve_hashtags: bool = True, preserve_mentions: bool = True) -> str:
         if not text:
             return ""
@@ -59,6 +62,7 @@ class DataCleaner:
         
         return text
     
+    # Validates tweet has required fields and content length within acceptable range
     def validate_tweet(self, tweet: Dict) -> bool:
         if not ('id' in tweet or 'tweet_id' in tweet):
             self.logger.debug(f"Tweet missing id field")
@@ -86,6 +90,7 @@ class DataCleaner:
         
         return True
     
+    # Cleans single tweet and returns structured dict with metrics or None if invalid
     def clean_tweet(self, tweet: Dict) -> Optional[Dict]:
         try:
             if not self.validate_tweet(tweet):
@@ -130,6 +135,7 @@ class DataCleaner:
             self.logger.error(f"Failed to clean tweet: {e}")
             return None
     
+    # Cleans list of tweets and logs cleaning statistics and success rate
     def clean_tweets(self, tweets: List[Dict]) -> List[Dict]:
         self.logger.info(f"Cleaning {len(tweets)} tweets")
         
@@ -146,6 +152,7 @@ class DataCleaner:
         
         return cleaned_tweets
     
+    # Converts tweet list to pandas DataFrame with proper data types and sorting
     def to_dataframe(self, tweets: List[Dict]) -> pd.DataFrame:
         if not tweets:
             return pd.DataFrame()
@@ -165,6 +172,7 @@ class DataCleaner:
         
         return df
     
+    # Extracts market information: stock symbols, numbers, price targets, sentiment indicators
     def extract_market_info(self, text: str) -> Dict[str, any]:
         info = {
             'has_stock_symbols': False,

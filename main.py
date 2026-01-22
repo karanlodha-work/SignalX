@@ -16,8 +16,10 @@ from src.analysis.signal_generator import SignalGenerator
 from src.analysis.visualizer import Visualizer
 
 
+# Orchestrates the entire market intelligence data collection and analysis pipeline
 class MarketIntelligenceSystem:
 
+    # Initializes system with configuration, logging, and component instances
     def __init__(self, config_path):
         self.config = self._load_config(config_path)
 
@@ -53,6 +55,7 @@ class MarketIntelligenceSystem:
             'actionable_signals': 0
         }
 
+    # Loads YAML configuration file or returns default configuration
     def _load_config(self, config_path: str) -> Dict:
         try:
             with open(config_path, 'r') as f:
@@ -64,6 +67,7 @@ class MarketIntelligenceSystem:
             print("Using default configuration")
             return self._get_default_config()
 
+    # Returns default configuration settings for all system components
     def _get_default_config(self) -> Dict:
         return {
             'scraper': {
@@ -94,6 +98,7 @@ class MarketIntelligenceSystem:
             }
         }
 
+    # Executes complete pipeline: scrape → clean → deduplicate → analyze → store → visualize
     def run_pipeline(self, save_raw: bool = True, save_processed: bool = True) -> Dict:
         self.logger.info("Starting data collection and analysis pipeline")
         self._log_system_info()
@@ -203,6 +208,7 @@ class MarketIntelligenceSystem:
         self.logger.info(f"  Memory Available: {psutil.virtual_memory().available / (1024**3):.2f} GB")
         self.logger.info(f"  Memory Percent: {psutil.virtual_memory().percent}%")
 
+    # Generates execution report with metrics, success rates, and performance statistics
     def _generate_report(self) -> Dict:
         duration = (datetime.now() - self.start_time).total_seconds()
 
@@ -236,7 +242,7 @@ class MarketIntelligenceSystem:
 
         return report
 
-
+# Starting Point
 def main():
     parser = argparse.ArgumentParser(
         description="Market Intelligence Data Collection and Analysis System"

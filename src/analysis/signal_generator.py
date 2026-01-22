@@ -1,3 +1,4 @@
+# Analyzes tweets and generates market sentiment signals with confidence scores
 
 import numpy as np
 import pandas as pd
@@ -13,6 +14,7 @@ import logging
 
 class SignalGenerator:
     
+    # Initializes with VADER/TextBlob sentiment analyzers and TF-IDF vectorizer
     def __init__(self, config: dict = None):
         self.config = config or {}
         self.logger = logging.getLogger(__name__)
@@ -37,6 +39,7 @@ class SignalGenerator:
         
         self.scaler = MinMaxScaler()
     
+    # Analyzes text sentiment using VADER and TextBlob, returns sentiment metrics
     def analyze_sentiment(self, text: str) -> Dict[str, float]:
         sentiment = {
             'vader_compound': 0.0,
@@ -78,6 +81,7 @@ class SignalGenerator:
         
         return sentiment
     
+    # Extracts TF-IDF features from texts and returns feature matrix with feature names
     def extract_tfidf_features(self, texts: List[str]) -> Tuple[np.ndarray, List[str]]:
         self.logger.info(f"Extracting TF-IDF features from {len(texts)} texts")
         
@@ -93,6 +97,7 @@ class SignalGenerator:
             self.logger.error(f"TF-IDF extraction failed: {e}")
             return np.array([]), []
     
+    # Calculates engagement score from likes, retweets, and replies with weighted formula
     def calculate_engagement_score(self, row: pd.Series) -> float:
         likes = row.get('likes', 0)
         retweets = row.get('retweets', 0)
@@ -102,6 +107,7 @@ class SignalGenerator:
         
         return score
     
+    # Applies exponential decay to signals based on age, newer signals weighted higher
     def calculate_temporal_decay(self, timestamp: datetime, half_life_hours: float = 6.0) -> float:
         try:
             if isinstance(timestamp, str):
@@ -121,6 +127,7 @@ class SignalGenerator:
             self.logger.warning(f"Temporal decay calculation failed: {e}")
             return 0.5
     
+    # Generates trading signals with sentiment, engagement, and confidence scores
     def generate_signals(self, df: pd.DataFrame) -> pd.DataFrame:
         self.logger.info(f"Generating signals for {len(df)} tweets")
         
@@ -187,6 +194,7 @@ class SignalGenerator:
         
         return df
     
+    # Calculates signal confidence based on agreement of sentiment indicators and engagement
     def _calculate_confidence(self, row: pd.Series) -> float:
         indicators = [
             row.get('vader_compound', 0),
@@ -209,6 +217,7 @@ class SignalGenerator:
         
         return min(1.0, confidence)
     
+    # Aggregates signals by time bucket and calculates mean metrics per period
     def aggregate_signals(
         self,
         df: pd.DataFrame,
@@ -250,6 +259,7 @@ class SignalGenerator:
         
         return agg_df
     
+    # Returns top N signals filtered by type (bullish/bearish/all) sorted by strength
     def get_top_signals(
         self,
         df: pd.DataFrame,
@@ -268,6 +278,7 @@ class SignalGenerator:
         return top_signals[['content', 'username', 'timestamp', 'signal_strength', 
                            'signal_direction', 'confidence', 'total_engagement']]
     
+    # Generates summary report with signal counts, sentiment, engagement, and top hashtags
     def generate_report(self, df: pd.DataFrame) -> Dict:
         report = {
             'timestamp': datetime.now().isoformat(),
@@ -282,10 +293,10 @@ class SignalGenerator:
             'top_hashtags': self._get_top_hashtags(df, 10),
             'market_sentiment': 'Bullish' if df['composite_sentiment'].mean() > 0.1 
                               else ('Bearish' if df['composite_sentiment'].mean() < -0.1 else 'Neutral')
-        }
-        
+        }    
         return report
     
+    # Extracts and ranks top N hashtags by frequency, sentiment, and signal strength
     def _get_top_hashtags(self, df: pd.DataFrame, n: int = 10) -> List[Dict]:
         
         hashtag_df = df.explode('hashtags')

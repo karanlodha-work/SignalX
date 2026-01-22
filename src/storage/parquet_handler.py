@@ -8,8 +8,10 @@ import pyarrow.parquet as pq
 
 import logging
 
+# Handles reading/writing data in Parquet format with compression and schema optimization
 class ParquetHandler:
     
+    # Initializes with output paths and compression settings
     def __init__(self, config: dict = None):
         self.config = config or {}
         self.logger = logging.getLogger(__name__)
@@ -20,6 +22,7 @@ class ParquetHandler:
         self.compression = self.config.get('compression', 'snappy')
         self.parquet_version = self.config.get('parquet_version', '2.6')
         
+    # Defines PyArrow schema with optimized data types for tweet data
     def _create_optimized_schema(self) -> pa.Schema:
         schema = pa.schema([
             ('tweet_id', pa.string()),
@@ -39,6 +42,7 @@ class ParquetHandler:
         
         return schema
     
+    # Converts DataFrame columns to proper data types and handles timezones
     def _prepare_dataframe(self, df: pd.DataFrame) -> pd.DataFrame:
         df = df.copy()
         
@@ -68,6 +72,7 @@ class ParquetHandler:
         
         return df
     
+    # Saves DataFrame to Parquet file with compression and optimized writing
     def save_to_parquet(
         self,
         df: pd.DataFrame,
@@ -111,6 +116,7 @@ class ParquetHandler:
             self.logger.error(f"Failed to save Parquet file: {e}", exc_info=True)
             raise
     
+    # Loads data from Parquet file with optional column selection and filters
     def load_from_parquet(
         self,
         filepath: str,
@@ -134,6 +140,7 @@ class ParquetHandler:
             self.logger.error(f"Failed to load Parquet file: {e}", exc_info=True)
             raise
     
+    # Appends new DataFrame rows to existing Parquet file, deduplicates by tweet_id
     def append_to_parquet(self, df: pd.DataFrame, filepath: str):
         if df.empty:
             self.logger.warning("Empty DataFrame, skipping append")
@@ -161,6 +168,7 @@ class ParquetHandler:
             self.logger.error(f"Failed to append to Parquet file: {e}", exc_info=True)
             raise
     
+    # Returns Parquet file metadata: rows, columns, row groups, format, file size
     def get_parquet_info(self, filepath: str) -> Dict:
         try:
             parquet_file = pq.ParquetFile(filepath)
@@ -181,6 +189,7 @@ class ParquetHandler:
             self.logger.error(f"Failed to read Parquet info: {e}")
             return {}
     
+    # Deduplicates, sorts, and recompresses Parquet file, returns optimized file path
     def optimize_storage(self, filepath: str) -> str:
         self.logger.info(f"Optimizing {filepath}")
         
@@ -204,6 +213,7 @@ class ParquetHandler:
         
         return optimized_path
     
+    # Returns list of all Parquet files in processed data directory
     def list_parquet_files(self) -> List[str]:
         files = list(self.processed_path.glob('*.parquet'))
         return [str(f) for f in files]

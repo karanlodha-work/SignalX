@@ -1,3 +1,4 @@
+# Creates market sentiment visualizations and interactive dashboards
 
 import numpy as np
 import pandas as pd
@@ -14,6 +15,7 @@ import logging
 
 class Visualizer:
     
+    # Initializes with output paths, figure settings, and matplotlib styling
     def __init__(self, config: dict = None):
         self.config = config or {}
         self.logger = logging.getLogger(__name__)
@@ -33,6 +35,7 @@ class Visualizer:
         
         sns.set_theme(style="darkgrid")
     
+    # Randomly samples dataframe to max_points for performance optimization
     def _sample_data(self, df: pd.DataFrame, max_points: Optional[int] = None) -> pd.DataFrame:
         if max_points is None:
             max_points = self.max_points
@@ -48,6 +51,7 @@ class Visualizer:
         
         return df
     
+    # Plots sentiment over time with bullish/bearish areas and tweet count
     def plot_sentiment_timeline(
         self,
         df: pd.DataFrame,
@@ -97,6 +101,7 @@ class Visualizer:
         
         self.logger.info(f"Saved sentiment timeline to {filepath}")
     
+    # Creates 2x2 distribution plots for likes, retweets, replies, and total engagement
     def plot_engagement_distribution(
         self,
         df: pd.DataFrame,
@@ -140,6 +145,7 @@ class Visualizer:
         
         self.logger.info(f"Saved engagement distribution to {filepath}")
     
+    # Plots top hashtags by frequency and sentiment with bar charts
     def plot_hashtag_analysis(
         self,
         df: pd.DataFrame,
@@ -183,6 +189,7 @@ class Visualizer:
         
         self.logger.info(f"Saved hashtag analysis to {filepath}")
     
+    # Creates heatmap of signal strength by hour and date using color intensity
     def plot_signal_strength_heatmap(
         self,
         df: pd.DataFrame,
@@ -218,6 +225,7 @@ class Visualizer:
         
         self.logger.info(f"Saved signal heatmap to {filepath}")
     
+    # Creates interactive 2x2 Plotly dashboard with sentiment, signals, engagement, hashtags
     def create_interactive_dashboard(
         self,
         df: pd.DataFrame,
@@ -291,6 +299,7 @@ class Visualizer:
         
         self.logger.info(f"Saved interactive dashboard to {filepath}")
     
+    # Generates all visualization types and saves as PNG and interactive HTML
     def generate_all_visualizations(self, df: pd.DataFrame):
         self.logger.info("Generating all visualizations")
         

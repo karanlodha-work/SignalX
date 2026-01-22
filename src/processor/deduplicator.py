@@ -1,3 +1,4 @@
+# Removes duplicate tweets using ID-based, content hash, and fuzzy similarity matching
 
 import hashlib
 from typing import List, Dict, Set, Tuple
@@ -8,11 +9,13 @@ import logging
 
 class Deduplicator:
     
+    # Initializes with hash computation method and tracking for seen content
     def __init__(self, config: dict = None):
         self.config = config or {}
         self.logger = logging.getLogger(__name__)
         self.seen_hashes: Set[str] = set()
         
+    # Computes MD5 or SHA256 hash of content for duplicate detection
     def _compute_hash(self, content: str, method: str = 'md5') -> str:
         content_bytes = content.encode('utf-8')
         
@@ -21,9 +24,11 @@ class Deduplicator:
         else:
             return hashlib.md5(content_bytes).hexdigest()
     
+    # Normalizes text by converting to lowercase and removing whitespace
     def _normalize_for_comparison(self, text: str) -> str:
         return ''.join(text.lower().split())
     
+    # Removes tweets with duplicate IDs, keeps first occurrence
     def deduplicate_by_id(self, tweets: List[Dict]) -> List[Dict]:
         seen_ids = set()
         unique_tweets = []
@@ -39,12 +44,14 @@ class Deduplicator:
         
         return unique_tweets
     
+    # Removes duplicate content using exact hash match (1.0) or fuzzy Jaccard similarity
     def deduplicate_by_content(self, tweets: List[Dict], threshold: float = 1.0) -> List[Dict]:
         if threshold == 1.0:
             return self._deduplicate_exact(tweets)
         else:
             return self._deduplicate_fuzzy(tweets, threshold)
     
+    # Removes tweets with identical normalized and hashed content
     def _deduplicate_exact(self, tweets: List[Dict]) -> List[Dict]:
         seen_hashes = set()
         unique_tweets = []
@@ -66,6 +73,7 @@ class Deduplicator:
         
         return unique_tweets
     
+    # Removes similar tweets using Jaccard similarity above threshold
     def _deduplicate_fuzzy(self, tweets: List[Dict], threshold: float) -> List[Dict]:
         unique_tweets = []
         content_sets = []
@@ -93,6 +101,7 @@ class Deduplicator:
         
         return unique_tweets
     
+    # Calculates Jaccard similarity between two sets (intersection/union)
     @staticmethod
     def _jaccard_similarity(set1: Set, set2: Set) -> float:
         if not set1 or not set2:
@@ -103,6 +112,7 @@ class Deduplicator:
         
         return intersection / union if union > 0 else 0.0
     
+    # Separates tweets into original and retweets based on content pattern
     def deduplicate_retweets(self, tweets: List[Dict]) -> Tuple[List[Dict], List[Dict]]:
         originals = []
         retweets = []
@@ -125,6 +135,7 @@ class Deduplicator:
         
         return originals, retweets
     
+    # Removes duplicate rows from DataFrame based on subset columns, keeps first occurrence
     def deduplicate_dataframe(self, df: pd.DataFrame, subset: List[str] = None) -> pd.DataFrame:
         if df.empty:
             return df
@@ -143,6 +154,7 @@ class Deduplicator:
         
         return df_dedup
     
+    # Analyzes duplicates and returns stats: unique IDs/content, retweets, duplicate groups
     def get_duplicate_statistics(self, tweets: List[Dict]) -> Dict:
         stats = {
             'total_tweets': len(tweets),

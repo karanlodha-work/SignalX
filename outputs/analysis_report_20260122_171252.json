@@ -1,0 +1,74 @@
+{
+  "timestamp": "2026-01-22T17:12:52.611911",
+  "total_tweets": 793,
+  "actionable_signals": 35,
+  "bullish_signals": 507,
+  "bearish_signals": 84,
+  "neutral_signals": 202,
+  "average_sentiment": 0.18397582547797417,
+  "average_confidence": 0.3305535714229355,
+  "total_engagement": 2364,
+  "top_hashtags": [
+    {
+      "hashtags": "sensex",
+      "count": 411,
+      "signal_strength": 0.2992456238431288,
+      "composite_sentiment": 0.1768949250695879
+    },
+    {
+      "hashtags": "nifty",
+      "count": 385,
+      "signal_strength": 0.2721815997110084,
+      "composite_sentiment": 0.1867788769232211
+    },
+    {
+      "hashtags": "nifty50",
+      "count": 360,
+      "signal_strength": 0.284983833619194,
+      "composite_sentiment": 0.16341813880442752
+    },
+    {
+      "hashtags": "banknifty",
+      "count": 311,
+      "signal_strength": 0.2462630344879573,
+      "composite_sentiment": 0.2122432530982772
+    },
+    {
+      "hashtags": "stockmarket",
+      "count": 129,
+      "signal_strength": 0.2848695624213102,
+      "composite_sentiment": 0.1916015716131414
+    },
+    {
+      "hashtags": "stockmarketindia",
+      "count": 124,
+      "signal_strength": 0.2852719313610106,
+      "composite_sentiment": 0.21951066694207824
+    },
+    {
+      "hashtags": "optionstrading",
+      "count": 107,
+      "signal_strength": 0.26246344865800003,
+      "composite_sentiment": 0.21958670493317692
+    },
+    {
+      "hashtags": "optionbuying",
+      "count": 80,
+      "signal_strength": 0.25150025940703474,
+      "composite_sentiment": 0.18046267942821068
+    },
+    {
+      "hashtags": "trading",
+      "count": 47,
+      "signal_strength": 0.2888684723116079,
+      "composite_sentiment": 0.21578239614994935
+    },
+    {
+      "hashtags": "herozero",
+      "count": 42,
+      "signal_strength": 0.27466990279147746,
+      "composite_sentiment": 0.1288911825740397
+    }
+  ],
+  "market_sentiment": "Bullish"
+}

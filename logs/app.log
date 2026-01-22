@@ -1,0 +1,167 @@
+2026-01-22 16:38:48,497 - __main__ - INFO - ================================================================================
+2026-01-22 16:38:48,497 - __main__ - INFO - Market Intelligence System - Starting
+2026-01-22 16:38:48,497 - __main__ - INFO - ================================================================================
+2026-01-22 16:38:48,517 - __main__ - INFO - Starting data collection and analysis pipeline
+2026-01-22 16:38:48,517 - __main__ - INFO - 
+System Information:
+2026-01-22 16:38:48,517 - __main__ - INFO -   CPU Count: 8
+2026-01-22 16:38:48,522 - __main__ - INFO -   Memory Available: 4.86 GB
+2026-01-22 16:38:48,528 - __main__ - INFO -   Memory Percent: 69.3%
+2026-01-22 16:38:48,528 - __main__ - INFO - 
+================================================================================
+2026-01-22 16:38:48,529 - __main__ - INFO - STEP 1: Data Collection
+2026-01-22 16:38:48,529 - __main__ - INFO - ================================================================================
+2026-01-22 16:38:48,529 - src.scraper.twitter_scraper - INFO - Starting scrape for 7 hashtags, target: 2000 tweets
+2026-01-22 16:38:48,529 - src.scraper.twitter_scraper - INFO - Setting up Chrome driver with stealth mode
+2026-01-22 16:38:51,317 - undetected_chromedriver.patcher - INFO - patching driver executable C:\Users\Admin\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2026-01-22 16:38:55,694 - src.scraper.twitter_scraper - INFO - Chrome driver setup successful
+2026-01-22 16:38:55,694 - src.scraper.twitter_scraper - INFO - Opening X.com for manual login...
+2026-01-22 16:39:38,956 - src.scraper.twitter_scraper - INFO - Login confirmed. Starting to scrape...
+2026-01-22 16:39:39,286 - src.scraper.twitter_scraper - INFO - Scraping hashtag: #nifty50
+2026-01-22 16:40:31,716 - src.scraper.twitter_scraper - INFO - Progress: 17 tweets after 10 scrolls
+2026-01-22 16:41:18,163 - src.scraper.twitter_scraper - INFO - Progress: 48 tweets after 20 scrolls
+2026-01-22 16:42:05,230 - src.scraper.twitter_scraper - INFO - Progress: 80 tweets after 30 scrolls
+2026-01-22 16:42:50,980 - src.scraper.twitter_scraper - INFO - Progress: 116 tweets after 40 scrolls
+2026-01-22 16:43:36,571 - src.scraper.twitter_scraper - INFO - Progress: 153 tweets after 50 scrolls
+2026-01-22 16:44:21,996 - src.scraper.twitter_scraper - INFO - Progress: 191 tweets after 60 scrolls
+2026-01-22 16:45:07,074 - src.scraper.twitter_scraper - INFO - Progress: 222 tweets after 70 scrolls
+2026-01-22 16:45:52,860 - src.scraper.twitter_scraper - INFO - Progress: 256 tweets after 80 scrolls
+2026-01-22 16:46:37,257 - src.scraper.twitter_scraper - INFO - Progress: 284 tweets after 90 scrolls
+2026-01-22 16:46:37,387 - src.scraper.twitter_scraper - INFO - Collected 285 tweets for #nifty50
+2026-01-22 16:46:40,045 - src.scraper.twitter_scraper - INFO - Scraping hashtag: #sensex
+2026-01-22 16:47:28,029 - src.scraper.twitter_scraper - INFO - Progress: 25 tweets after 10 scrolls
+2026-01-22 16:48:13,883 - src.scraper.twitter_scraper - INFO - Progress: 47 tweets after 20 scrolls
+2026-01-22 16:48:59,808 - src.scraper.twitter_scraper - INFO - Progress: 75 tweets after 30 scrolls
+2026-01-22 16:49:49,141 - src.scraper.twitter_scraper - INFO - Progress: 103 tweets after 40 scrolls
+2026-01-22 16:50:39,505 - src.scraper.twitter_scraper - INFO - Progress: 142 tweets after 50 scrolls
+2026-01-22 16:51:27,515 - src.scraper.twitter_scraper - INFO - Progress: 165 tweets after 60 scrolls
+2026-01-22 16:52:17,046 - src.scraper.twitter_scraper - INFO - Progress: 195 tweets after 70 scrolls
+2026-01-22 16:53:07,401 - src.scraper.twitter_scraper - INFO - Progress: 223 tweets after 80 scrolls
+2026-01-22 16:53:58,651 - src.scraper.twitter_scraper - INFO - Progress: 256 tweets after 90 scrolls
+2026-01-22 16:54:52,603 - src.scraper.twitter_scraper - INFO - Progress: 279 tweets after 100 scrolls
+2026-01-22 16:54:54,164 - src.scraper.twitter_scraper - INFO - Collected 285 tweets for #sensex
+2026-01-22 16:54:56,978 - src.scraper.twitter_scraper - INFO - Scraping hashtag: #intraday
+2026-01-22 16:55:48,506 - src.scraper.twitter_scraper - INFO - Progress: 2 tweets after 10 scrolls
+2026-01-22 16:56:33,227 - src.scraper.twitter_scraper - INFO - Progress: 2 tweets after 20 scrolls
+2026-01-22 16:56:33,353 - src.scraper.twitter_scraper - INFO - No new tweets found after multiple scrolls, stopping
+2026-01-22 16:56:33,353 - src.scraper.twitter_scraper - INFO - Collected 2 tweets for #intraday
+2026-01-22 16:56:35,967 - src.scraper.twitter_scraper - INFO - Scraping hashtag: #banknifty
+2026-01-22 16:57:24,615 - src.scraper.twitter_scraper - INFO - Progress: 5 tweets after 10 scrolls
+2026-01-22 16:58:13,378 - src.scraper.twitter_scraper - INFO - Progress: 16 tweets after 20 scrolls
+2026-01-22 16:59:05,540 - src.scraper.twitter_scraper - INFO - Progress: 39 tweets after 30 scrolls
+2026-01-22 16:59:55,184 - src.scraper.twitter_scraper - INFO - Progress: 53 tweets after 40 scrolls
+2026-01-22 17:00:47,869 - src.scraper.twitter_scraper - INFO - Progress: 83 tweets after 50 scrolls
+2026-01-22 17:01:41,247 - src.scraper.twitter_scraper - INFO - Progress: 116 tweets after 60 scrolls
+2026-01-22 17:02:30,783 - src.scraper.twitter_scraper - INFO - Progress: 140 tweets after 70 scrolls
+2026-01-22 17:03:24,876 - src.scraper.twitter_scraper - INFO - Progress: 175 tweets after 80 scrolls
+2026-01-22 17:04:17,379 - src.scraper.twitter_scraper - INFO - Progress: 197 tweets after 90 scrolls
+2026-01-22 17:05:12,525 - src.scraper.twitter_scraper - INFO - Progress: 230 tweets after 100 scrolls
+2026-01-22 17:06:00,154 - src.scraper.twitter_scraper - INFO - Progress: 253 tweets after 110 scrolls
+2026-01-22 17:06:46,660 - src.scraper.twitter_scraper - INFO - Progress: 260 tweets after 120 scrolls
+2026-01-22 17:07:34,033 - src.scraper.twitter_scraper - INFO - Progress: 260 tweets after 130 scrolls
+2026-01-22 17:07:43,321 - src.scraper.twitter_scraper - INFO - No new tweets found after multiple scrolls, stopping
+2026-01-22 17:07:43,323 - src.scraper.twitter_scraper - INFO - Collected 260 tweets for #banknifty
+2026-01-22 17:07:46,194 - src.scraper.twitter_scraper - INFO - Scraping hashtag: #stockmarket
+2026-01-22 17:08:40,962 - src.scraper.twitter_scraper - INFO - Progress: 5 tweets after 10 scrolls
+2026-01-22 17:09:24,635 - src.scraper.twitter_scraper - INFO - Progress: 5 tweets after 20 scrolls
+2026-01-22 17:09:24,813 - src.scraper.twitter_scraper - INFO - No new tweets found after multiple scrolls, stopping
+2026-01-22 17:09:24,813 - src.scraper.twitter_scraper - INFO - Collected 5 tweets for #stockmarket
+2026-01-22 17:09:27,777 - src.scraper.twitter_scraper - INFO - Scraping hashtag: #nse
+2026-01-22 17:10:21,509 - src.scraper.twitter_scraper - INFO - Progress: 5 tweets after 10 scrolls
+2026-01-22 17:11:04,855 - src.scraper.twitter_scraper - INFO - Progress: 5 tweets after 20 scrolls
+2026-01-22 17:11:05,039 - src.scraper.twitter_scraper - INFO - No new tweets found after multiple scrolls, stopping
+2026-01-22 17:11:05,039 - src.scraper.twitter_scraper - INFO - Collected 5 tweets for #nse
+2026-01-22 17:11:07,198 - src.scraper.twitter_scraper - INFO - Scraping hashtag: #bse
+2026-01-22 17:12:01,219 - src.scraper.twitter_scraper - INFO - Progress: 2 tweets after 10 scrolls
+2026-01-22 17:12:44,623 - src.scraper.twitter_scraper - INFO - Progress: 2 tweets after 20 scrolls
+2026-01-22 17:12:44,807 - src.scraper.twitter_scraper - INFO - No new tweets found after multiple scrolls, stopping
+2026-01-22 17:12:44,807 - src.scraper.twitter_scraper - INFO - Collected 2 tweets for #bse
+2026-01-22 17:12:47,597 - src.scraper.twitter_scraper - INFO - Scraping complete. Total tweets: 844
+2026-01-22 17:12:50,933 - src.scraper.twitter_scraper - INFO - Browser closed
+2026-01-22 17:12:50,933 - __main__ - INFO - [OK] Scraped 844 tweets
+2026-01-22 17:12:51,007 - src.scraper.twitter_scraper - INFO - Saved 844 tweets to data\raw\tweets_20260122_171250.json
+2026-01-22 17:12:51,007 - __main__ - INFO - [OK] Saved raw data to data\raw\tweets_20260122_171250.json
+2026-01-22 17:12:51,007 - __main__ - INFO - 
+================================================================================
+2026-01-22 17:12:51,020 - __main__ - INFO - STEP 2: Data Cleaning
+2026-01-22 17:12:51,020 - __main__ - INFO - ================================================================================
+2026-01-22 17:12:51,020 - src.processor.data_cleaner - INFO - Cleaning 844 tweets
+2026-01-22 17:12:51,064 - src.processor.data_cleaner - INFO - Cleaning complete. 840/844 tweets valid (99.5%)
+2026-01-22 17:12:51,064 - __main__ - INFO - [OK] Cleaned 840 tweets
+2026-01-22 17:12:51,072 - __main__ - INFO - 
+================================================================================
+2026-01-22 17:12:51,074 - __main__ - INFO - STEP 3: Deduplication
+2026-01-22 17:12:51,075 - __main__ - INFO - ================================================================================
+2026-01-22 17:12:51,098 - __main__ - INFO - Duplicate analysis: {
+  "total_tweets": 840,
+  "unique_ids": 840,
+  "unique_content": 793,
+  "retweet_count": 0,
+  "duplicate_content_groups": 12
+}
+2026-01-22 17:12:51,098 - src.processor.deduplicator - INFO - Removed 0 duplicate tweets by ID
+2026-01-22 17:12:51,110 - src.processor.deduplicator - INFO - Removed 47 duplicate tweets by exact content
+2026-01-22 17:12:51,114 - __main__ - INFO - [OK] 793 unique tweets after deduplication
+2026-01-22 17:12:51,168 - src.processor.data_cleaner - INFO - Created DataFrame with 793 rows and 13 columns
+2026-01-22 17:12:51,171 - __main__ - INFO - 
+================================================================================
+2026-01-22 17:12:51,171 - __main__ - INFO - STEP 4: Signal Generation
+2026-01-22 17:12:51,171 - __main__ - INFO - ================================================================================
+2026-01-22 17:12:51,171 - src.analysis.signal_generator - INFO - Generating signals for 793 tweets
+2026-01-22 17:12:51,171 - src.analysis.signal_generator - INFO - Analyzing sentiment...
+2026-01-22 17:12:52,474 - src.analysis.signal_generator - INFO - Calculating engagement scores...
+2026-01-22 17:12:52,516 - src.analysis.signal_generator - INFO - Calculating temporal weights...
+2026-01-22 17:12:52,542 - src.analysis.signal_generator - INFO - Generating composite signals...
+2026-01-22 17:12:52,595 - src.analysis.signal_generator - INFO - Generated signals: 35 actionable (4.4%)
+2026-01-22 17:12:52,660 - __main__ - INFO - 
+Signal Report:
+2026-01-22 17:12:52,660 - __main__ - INFO -   Market Sentiment: Bullish
+2026-01-22 17:12:52,660 - __main__ - INFO -   Bullish Signals: 507
+2026-01-22 17:12:52,660 - __main__ - INFO -   Bearish Signals: 84
+2026-01-22 17:12:52,660 - __main__ - INFO -   Average Confidence: 0.331
+2026-01-22 17:12:52,660 - __main__ - INFO - 
+================================================================================
+2026-01-22 17:12:52,660 - __main__ - INFO - STEP 5: Data Storage
+2026-01-22 17:12:52,660 - __main__ - INFO - ================================================================================
+2026-01-22 17:12:52,669 - src.storage.parquet_handler - INFO - Saving 793 rows to Parquet
+2026-01-22 17:12:52,804 - src.storage.parquet_handler - INFO - Saved to data\processed\tweets_processed_20260122_171252.parquet (0.18 MB, snappy compression)
+2026-01-22 17:12:52,820 - __main__ - INFO - 
+================================================================================
+2026-01-22 17:12:52,822 - __main__ - INFO - STEP 6: Visualization
+2026-01-22 17:12:52,822 - __main__ - INFO - ================================================================================
+2026-01-22 17:12:52,822 - src.analysis.visualizer - INFO - Generating all visualizations
+2026-01-22 17:12:52,824 - src.analysis.visualizer - INFO - Creating sentiment timeline plot
+2026-01-22 17:12:54,595 - src.analysis.visualizer - INFO - Saved sentiment timeline to outputs\visualizations\sentiment_timeline.png
+2026-01-22 17:12:54,595 - src.analysis.visualizer - INFO - Creating engagement distribution plot
+2026-01-22 17:12:58,431 - src.analysis.visualizer - INFO - Saved engagement distribution to outputs\visualizations\engagement_distribution.png
+2026-01-22 17:12:58,431 - src.analysis.visualizer - INFO - Creating hashtag analysis plot (top 15)
+2026-01-22 17:12:59,740 - src.analysis.visualizer - INFO - Saved hashtag analysis to outputs\visualizations\hashtag_analysis.png
+2026-01-22 17:12:59,740 - src.analysis.visualizer - INFO - Creating signal strength heatmap
+2026-01-22 17:13:00,662 - src.analysis.visualizer - INFO - Saved signal heatmap to outputs\visualizations\signal_heatmap.png
+2026-01-22 17:13:00,662 - src.analysis.visualizer - INFO - Creating interactive dashboard
+2026-01-22 17:13:02,805 - src.analysis.visualizer - INFO - Saved interactive dashboard to outputs\visualizations\interactive_dashboard.html
+2026-01-22 17:13:02,805 - src.analysis.visualizer - INFO - All visualizations generated successfully
+2026-01-22 17:13:02,812 - __main__ - INFO - 
+================================================================================
+2026-01-22 17:13:02,812 - __main__ - INFO - PIPELINE COMPLETE
+2026-01-22 17:13:02,812 - __main__ - INFO - ================================================================================
+2026-01-22 17:13:02,812 - __main__ - INFO - 
+================================================================================
+2026-01-22 17:13:02,812 - __main__ - INFO - EXECUTION REPORT
+2026-01-22 17:13:02,812 - __main__ - INFO - ================================================================================
+2026-01-22 17:13:02,812 - __main__ - INFO - Total Execution Time: 34.24 minutes
+2026-01-22 17:13:02,820 - __main__ - INFO - 
+Metrics:
+2026-01-22 17:13:02,820 - __main__ - INFO -   Tweets Scraped: 844
+2026-01-22 17:13:02,821 - __main__ - INFO -   Tweets Cleaned: 840
+2026-01-22 17:13:02,821 - __main__ - INFO -   Tweets Deduplicated: 793
+2026-01-22 17:13:02,821 - __main__ - INFO -   Actionable Signals: 35
+2026-01-22 17:13:02,821 - __main__ - INFO - 
+Success Rates:
+2026-01-22 17:13:02,821 - __main__ - INFO -   Cleaning: 99.5%
+2026-01-22 17:13:02,821 - __main__ - INFO -   Deduplication: 94.4%
+2026-01-22 17:13:02,821 - __main__ - INFO -   Actionable Signals: 4.4%
+2026-01-22 17:13:02,821 - __main__ - INFO - 
+Memory Usage:
+2026-01-22 17:13:02,821 - __main__ - INFO -   RSS: 288.89 MB
+2026-01-22 17:13:02,821 - __main__ - INFO -   VMS: 725.54 MB
